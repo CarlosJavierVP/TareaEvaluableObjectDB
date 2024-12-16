@@ -18,7 +18,7 @@ public class Usuario implements Serializable {
     private String correo;
     private String nombre;
 
-    @OneToMany(mappedBy = "usuario", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Comentario> comentarios = new ArrayList<>();
 
 

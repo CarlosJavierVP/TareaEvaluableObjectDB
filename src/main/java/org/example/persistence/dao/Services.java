@@ -35,12 +35,17 @@ public class Services {
     }
 
 
+    /**
+     * 2ª Historia de Usuario
+     * @param puntuacion puntuacion
+     * @return lista de comentarios puntuados segun parámetro
+     */
     public List<Comentario> comentariosByValoracion(int puntuacion) {
         List<Comentario> comentarios = null;
         try{
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            TypedQuery<Comentario> query = em.createQuery("SELECT c FROM Comentario c WHERE c.valoracion = :valor", Comentario.class);
+            TypedQuery<Comentario> query = em.createQuery("SELECT c FROM Comentario c WHERE c.valoracion >= :valor", Comentario.class);
             query.setParameter("valor", puntuacion);
             comentarios = query.getResultList();
         }catch(Exception e){
@@ -48,6 +53,33 @@ public class Services {
         }
         return comentarios;
     }
+
+    public void saveComentario(Usuario u) {
+        try{
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.merge(u);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            emf.close();
+        }
+    }
+
+    public void deleteTrolls(Usuario u) {
+        try{
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.remove(u);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            em.close();
+        }
+    }
+
 
 
     public void saveUserAndComent(Usuario user) {
