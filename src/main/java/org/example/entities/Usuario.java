@@ -14,11 +14,11 @@ public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Id
     private String correo;
     private String nombre;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Comentario> comentarios = new ArrayList<>();
 
 
@@ -27,4 +27,12 @@ public class Usuario implements Serializable {
         c.setUsuario(this);
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "correo='" + correo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", comentarios=" + comentarios +
+                '}';
+    }
 }

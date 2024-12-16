@@ -17,10 +17,18 @@ public class Comentario implements Serializable {
     private String textoComentario;
     private int valoracion;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "correo")
     private Usuario usuario;
 
 
-
+    @Override
+    public String toString() {
+        return "Comentario{" +
+                "idComentario=" + idComentario +
+                ", textoComentario='" + textoComentario + '\'' +
+                ", valoracion=" + valoracion +
+                ", usuario=" + usuario.getNombre() +
+                '}';
+    }
 }
