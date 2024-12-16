@@ -27,10 +27,9 @@ public class Services {
             em.getTransaction().begin();
             em.persist(user);
             em.getTransaction().commit();
+            em.close();
         }catch(Exception e){
             e.printStackTrace();
-        }finally{
-            emf.close();
         }
     }
 
@@ -64,10 +63,9 @@ public class Services {
             em.getTransaction().begin();
             em.merge(u);
             em.getTransaction().commit();
+            em.close();
         }catch(Exception e){
             e.printStackTrace();
-        }finally{
-            emf.close();
         }
     }
 
@@ -94,31 +92,4 @@ public class Services {
         }
     }
 
-
-
-
-
-
-    public void saveUserAndComent(Usuario user) {
-        try{
-            EntityManager em = emf.createEntityManager();
-            em.getTransaction().begin();
-
-            if(!user.getComentarios().isEmpty()){
-                for(Comentario c : user.getComentarios()){
-                    if(c.getIdComentario() > 0){
-                        em.merge(c);
-                    }else{
-                        em.persist(c);
-                    }
-                }
-            }
-            em.persist(user);
-            em.getTransaction().commit();
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            emf.close();
-        }
-    }
 }

@@ -14,16 +14,24 @@ public class Main {
         /**
          * 1ª Historia de Usuario - ej práctico
          */
+
         /*
         Usuario u = new Usuario();
         u.setNombre("CarlosJavier");
         u.setCorreo("jajauja@correo.com");
 
-        //s.saveUser(u);
+        Comentario c = new Comentario();
+        c.setTextoComentario("Vamos a spring");
+        c.setValoracion(10);
+        u.addComentario(c);
 
-        System.out.println(u.getNombre());
+        s.saveUser(u);
+
+        System.out.println(u);
 
          */
+
+
 
         /**
          * 2ª Historia de Usuario - ej práctico
@@ -34,6 +42,7 @@ public class Main {
         /**
          * 3ª Historia de Usuario - ej práctico
          */
+
         /*
         Usuario u2 = new Usuario();
         u2.setNombre("Francisco");
@@ -41,22 +50,27 @@ public class Main {
 
         s.saveUser(u2);
 
-        Comentario c = new Comentario();
+        Comentario c2 = new Comentario();
         c.setTextoComentario("No es un examen");
         c.setValoracion(9);
 
-        u2.addComentario(c);
+        u2.addComentario(c2);
         s.saveComentario(u2);
 
         System.out.println(u2);
 
          */
 
+
         /**
          * 4ª Historia de Usuario - ej práctico
          */
 
-        //s.deleteTrolls(1L);
+        /*
+        s.deleteTrolls(1L);
+
+
+         */
 
 
 
