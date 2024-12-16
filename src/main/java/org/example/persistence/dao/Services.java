@@ -54,6 +54,10 @@ public class Services {
         return comentarios;
     }
 
+    /**
+     * 3ª Historia de Usuario
+     * @param u usuario
+     */
     public void saveComentario(Usuario u) {
         try{
             EntityManager em = emf.createEntityManager();
@@ -67,18 +71,31 @@ public class Services {
         }
     }
 
-    public void deleteTrolls(Usuario u) {
+    /**
+     * 4ª Historia de Usuario
+     * @param id id de usuario
+     */
+    public void deleteTrolls(Long id) {
+
+        Usuario user = null;
         try{
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.remove(u);
+
+            user = em.find(Usuario.class, id);
+            em.remove(user);
+
             em.getTransaction().commit();
+
         }catch(Exception e){
             e.printStackTrace();
         }finally{
-            em.close();
+            emf.close();
         }
     }
+
+
+
 
 
 

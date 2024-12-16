@@ -56,6 +56,8 @@ public class Main {
          * 4ª Historia de Usuario - ej práctico
          */
 
+        //s.deleteTrolls(1L);
+
 
 
 
